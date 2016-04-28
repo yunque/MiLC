@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h> 
+#include <math.h>
 
 #define DistanceDefault 1.7e308
 #define ErrorDefault 1.7e308
@@ -54,15 +54,15 @@ void initCentroids()
 		centroids[k] = (double*)malloc(nFeatures*sizeof(double));
 	}
 
-	centroids[0][0]=-0.357;	//Adam
+	centroids[0][0]=-0.357;	//A
 	centroids[0][1]=-0.253;
-	centroids[1][0]=-0.055; //Bob
+	centroids[1][0]=-0.055; //B
 	centroids[1][1]=4.392;
-	centroids[2][0]=2.674; 	//Charley
+	centroids[2][0]=2.674; 	//C
 	centroids[2][1]=-0.001;
-	centroids[3][0]=1.044; 	//David
+	centroids[3][0]=1.044; 	//D
 	centroids[3][1]=-1.251;
-	centroids[4][0]=-1.495;	//Edward
+	centroids[4][0]=-1.495;	//E
 	centroids[4][1]=-0.090;
 }
 
@@ -87,7 +87,7 @@ double Estep()
 			{
 				distance[line][k] += (coor[line][f]-centroids[k][f])*(coor[line][f]-centroids[k][f]);
 			}
-			
+
 			if (distance[line][k]<distanceMin)
 			{
 				distanceMin = distance[line][k];
@@ -162,7 +162,7 @@ void writeOutput(double error)
 	const char *filenameOutput = "OUTPUT.TXT";
 	const char *filenameComments = "OUTPUT.TXT";
 	FILE *fout = fopen(filenameOutput,"w");
-	
+
 	//char *Kname = (char*)malloc(nK*sizeof(char*));
 	const char *Kname[] = {"Adam","Bob","Charley","David","Edward"};
 
@@ -177,7 +177,7 @@ void writeOutput(double error)
 // MAIN
 int main()
 {
-	
+
 	int nIterations = 0;
 	double errorOld=errorNew+1;
 	srand(time(0));
@@ -187,7 +187,7 @@ int main()
 	centroids = (double**)malloc(nK*sizeof(double*));
 	klabel = (int*)malloc(nData*sizeof(int));
 
-	
+
 	readInput();
  	printf("Here \n");
 	initCentroids();
